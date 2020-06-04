@@ -222,6 +222,10 @@ function update(){
 
 }
 
+function gap(){
+
+}
+
 function draw(){
   canvasContext.fillStyle = '#E6E6FA';
   canvasContext.fillRect(0,0, canvas.width, canvas.height);
@@ -235,6 +239,7 @@ function draw(){
   }
   canvasContext.stroke(); 
   if( !gameOver && currentShape.isBottom){
+    setTimeout(gap, 150);
     var randomNumber = Math.floor(Math.random() * 3);
     for(var i = 0; i < currentShape.template[0].length; i++){
       for(var j = 0; j < currentShape.template[0].length; j++){
