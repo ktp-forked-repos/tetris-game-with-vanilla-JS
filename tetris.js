@@ -5,7 +5,7 @@ class Tetris{
     this.template = template;
     this.imageX = imageX;
     this.imageY = imageY;
-    this.speed = 240/framePerSecond;
+    this.speed = 140/framePerSecond;
     this.size = 40;
     //this.yReal = -this.template[0].length * this.size;
     this.yReal = -this.template[0].length * this.size;
