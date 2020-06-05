@@ -39,21 +39,16 @@ class Tetris{
     if(this.template[0].length == 3 && this.numberOfFlats == 2 && this.template[0][0] != 1 && this.template[0][1] != 1 && this.template[0][2] != 1){
       this.numberOfFlats++;
     }
-    if(this.template[0].length == 4 && this.template[2][0] == 1 && this.y == canvas.height - 3 * this.size ){
-      this.isBottom = true;
+    if((this.template[0].length == 4 && this.template[2][0] == 1 && this.y == canvas.height - 3 * this.size ) || this.y == canvas.height - this.numberOfFlats * this.size ){
+      setTimeout( () => this.isBottom = true, 140);
     }
-
-    if(this.y == canvas.height - this.numberOfFlats * this.size){
-      this.isBottom = true;
-    }
-
     for(var i = 0; i < this.template[0].length; i++){
       for(var j = this.template[0].length - 1; j >=0; j--){
         if( this.y / this.size + 5 + j >= 24 ){
 
         } 
         else if(this.template[j][i] == 1 && gameMatris[ this.y / this.size + 5 + j][this.x/ this.size + i] == 1){
-          this.isBottom = true;
+          setTimeout( () => this.isBottom = true, 140);
           j = 0; 
         }
         if(this.y < 0 && this.isBottom){
@@ -222,10 +217,6 @@ function update(){
 
 }
 
-function gap(){
-
-}
-
 function draw(){
   canvasContext.fillStyle = '#E6E6FA';
   canvasContext.fillRect(0,0, canvas.width, canvas.height);
@@ -239,7 +230,6 @@ function draw(){
   }
   canvasContext.stroke(); 
   if( !gameOver && currentShape.isBottom){
-    setTimeout(gap, 150);
     var randomNumber = Math.floor(Math.random() * 3);
     for(var i = 0; i < currentShape.template[0].length; i++){
       for(var j = 0; j < currentShape.template[0].length; j++){
